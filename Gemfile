@@ -6,6 +6,9 @@ ruby '2.6.6'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use mysql as the database for Active Record
