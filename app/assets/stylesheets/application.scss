@@ -24,14 +24,14 @@ body {
   width: 100%;
   align-items: stretch;
   .sidebar {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 14em;
+    max-width: 14em;
     min-height: 100vh;
     background: #303135;
     color: #fff;
     transition: all 0.3s;
     .sidebar-header{
-      padding: 20px;
+      padding: 1.2em;
       background: #1e1e20;
     }
     .list-unstyled {
@@ -41,7 +41,7 @@ body {
         transition: all 0.3s;
       }
       a {
-        padding: 10px;
+        padding: 0.6em;
         font-size: 1.1em;
         display: block;
       }
@@ -51,11 +51,12 @@ body {
       }
     }
     .components {
-      padding: 20px 0;
+      padding: 1.5em 0;
       border-bottom: 1px solid #1e1e20;
     }
   }
   .content {
-    padding: 50px 50px 50px 50px;
+    padding: 3em 3em 3em 3em;
+    flex-grow: 1;
   }
 }
