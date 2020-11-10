@@ -1,1 +1,7 @@
-users#edit
+.user_edit
+  .row
+    %h4= @user.name + ' ' + @user.surname
+  .row.user_edit_form
+    = render 'form', user: @user
+  .row
+    = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button'

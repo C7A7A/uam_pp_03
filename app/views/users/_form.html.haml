@@ -1,1 +1,37 @@
-users#form
+= form_with(model: user, local: true) do |form|
+  - if user.errors.any?
+    #error_explanation
+      %h3 #{pluralize(user.errors.count, 'error')} prohibited this user from saving
+
+      %ul
+        - user.errors.full_messages.each do |message|
+          %li= message
+  
+  .field.form-group.row
+    = form.label :name, 'Name', :class => 'col-3 col-form-label'
+    = form.text_field :name, size: 40, :class => 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :surname, 'Surname', :class => 'col-3 col-form-label'
+    = form.text_field :surname, size: 40, :class => 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :date_of_birth, 'Date of birth', :class => 'col-3 col-form-label'
+    = form.text_field :date_of_birth, size: 40, :class => 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :login, 'Login', :class => 'col-3 col-form-label'
+    = form.text_field :login, size: 40, :class => 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :password, 'Password', :class => 'col-3 col-form-label'
+    = form.text_field :password, size: 40, :class => 'col-9 form-control', :type => 'password'
+
+  .field.form-group.row
+    = form.label :role, 'Role', :class => 'col-3 col-form-label'
+    = form.select(:role_id, @roles.map { |role| [role.name, role.id] }, {}, { :class => 'col-9 form-control' })
+    
+  .actions.row.form-group.flex-float-right-content
+    = form.submit :class => 'btn btn-success submit_button'
+    
+  

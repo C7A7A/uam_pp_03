@@ -1,7 +1,7 @@
 .users
   .row
     %h3 Users
-    = link_to 'New User', new_user_path, :class => "btn btn-primary add_new_user"
+    = link_to 'Add new user', new_user_path, :class => "btn btn-primary add_new_user"
   .row.users_table_info
     %table.table
       %thead.thead-dark
@@ -15,16 +15,17 @@
         %th{ :scope => "col" } actions
       %tbody
         - @users.each.with_index do |user, index|
-          %tr
-            %th{ :scope => "row" }= index
-            %td= user.name
-            %td= user.surname
-            %td= user.date_of_birth
-            %td= user.login
-            %td= user.password
-            %td= user.role_id
-            %td
-              = link_to 'Show', user, :class => "btn btn-warning show_user action_button"
-              = link_to 'Edit', edit_user_path(user), :class => "btn btn-info edit_user action_button"
-              = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_user action_button"
+          - if !user.is_deleted
+            %tr
+              %th{ :scope => "row" }= index
+              %td= user.name
+              %td= user.surname
+              %td= user.date_of_birth
+              %td= user.login
+              %td= user.password #TODO: hash
+              %td= user.role.name
+              %td
+                = link_to 'Show', user, :class => "btn btn-warning show_user action_button"
+                = link_to 'Edit', edit_user_path(user), :class => "btn btn-info edit_user action_button"
+                = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_user action_button"
 

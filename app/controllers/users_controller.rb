@@ -11,10 +11,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @roles = Role.all
   end
 
   def edit
     @user = User.find(params[:id])
+    @roles = Role.all
   end
 
   def create
@@ -49,7 +51,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.destroy
+      if @user.is_deleted == false
+        @user.is_deleted = true
         format.html { redirect_to users_url, notice: 'User was successfully deleted' }
         format.json { head :no_content }
       else

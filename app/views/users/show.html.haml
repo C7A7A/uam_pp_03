@@ -1,1 +1,20 @@
-users#show
+.user_show
+  .row
+    %h4= @user.name + ' ' + @user.surname
+  .row.user_info
+    %table.table.table-hover
+      %tbody
+        %tr
+          %th{ :scope => "row" } Date of birth
+          %th{ :scope => "row" }= @user.date_of_birth
+        %tr
+          %th{ :scope => "row" } Login
+          %th{ :scope => "row" }= @user.login
+        %tr 
+          %th{ :scope => "row" } Password
+          %th{ :scope => "row" }= @user.password #TODO only admin can see hashed pass
+        %tr
+          %th{ :scope => "row" } Role
+          %th{ :scope => "row" }= @user.role.name
+  .row
+    = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button'
