@@ -27,6 +27,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully created' }
         format.json { render :show, status: :created,  location: @user}
       else 
+        @roles = Role.all
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfuly updated' }
         format.json { render :show, status: :ok, location: @user}
       else
+        @roles = Role.all
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -51,8 +53,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.is_deleted == false
+      if @user.is_deleted != true
         @user.is_deleted = true
+        @user.save
         format.html { redirect_to users_url, notice: 'User was successfully deleted' }
         format.json { head :no_content }
       else
@@ -64,6 +67,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :surname, :date_of_birth, :login, :password, :role_id)
+      params.require(:user).permit(:name, :surname, :date_of_birth, :login, :password, :role_id, :is_deleted)
     end
 end

@@ -1,5 +1,8 @@
 .user_show
   .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
     %h4= @user.name + ' ' + @user.surname
   .row.user_info
     %table.table.table-hover
@@ -18,3 +21,4 @@
           %th{ :scope => "row" }= @user.role.name
   .row
     = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button'
+    = link_to 'Users', users_path, :class => 'btn btn-primary redirect_users_button ml-1'

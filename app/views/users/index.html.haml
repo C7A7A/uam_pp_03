@@ -1,5 +1,8 @@
 .users
   .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
     %h3 Users
     = link_to 'Add new user', new_user_path, :class => "btn btn-primary add_new_user"
   .row.users_table_info
