@@ -8,24 +8,20 @@
   .row.users_table_info
     %table.table
       %thead.thead-dark
-        %th{ :scope => "col" } #
         %th{ :scope => "col" } name
         %th{ :scope => "col" } surname
         %th{ :scope => "col" } date of birth
         %th{ :scope => "col" } login
-        %th{ :scope => "col" } password
         %th{ :scope => "col" } role
         %th{ :scope => "col" } actions
       %tbody
-        - @users.each.with_index do |user, index|
+        - @users.each do |user|
           - if !user.is_deleted
             %tr
-              %th{ :scope => "row" }= index
               %td= user.name
               %td= user.surname
               %td= user.date_of_birth
               %td= user.login
-              %td= user.password #TODO: hash
               %td= user.role.name
               %td
                 = link_to 'Show', user, :class => "btn btn-warning show_user action_button"

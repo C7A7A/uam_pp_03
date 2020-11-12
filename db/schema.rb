@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_194311) do
+ActiveRecord::Schema.define(version: 2020_11_12_190032) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", limit: 200
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_194311) do
     t.string "surname", limit: 100
     t.date "date_of_birth"
     t.string "login", limit: 50
-    t.string "password", limit: 150
+    t.string "password_digest", limit: 200
     t.boolean "is_deleted"
     t.bigint "role_id", null: false
     t.datetime "created_at", null: false

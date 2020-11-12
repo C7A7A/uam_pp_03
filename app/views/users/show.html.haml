@@ -15,7 +15,7 @@
           %th{ :scope => "row" }= @user.login
         %tr 
           %th{ :scope => "row" } Password
-          %th{ :scope => "row" }= @user.password #TODO only admin can see hashed pass
+          %th{ :scope => "row" }= @user.password_digest #TODO only admin can see hashed pass
         %tr
           %th{ :scope => "row" } Role
           %th{ :scope => "row" }= @user.role.name

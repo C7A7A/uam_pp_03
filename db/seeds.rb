@@ -14,6 +14,9 @@ roles = Role.create([
     name: "admin"
   },
   {
+    name: 'moderator'
+  },
+  {
     name: "regular"
   }
 ])
