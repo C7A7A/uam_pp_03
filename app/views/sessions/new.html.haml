@@ -1,0 +1,16 @@
+.login_new
+  .row.justify-content-center 
+    - if flash[:alert]
+      %p.alert.alert-danger= flash[:alert]
+  .row.justify-content-center
+    = form_with url: '/login', local: true do |form|
+      .field.form-group.row
+        = form.label :login, 'Login', :class => 'form-label'
+        = form.text_field :login, size: 50, :class => 'col-12 form-control'
+      
+      .field.form-group.row
+        = form.label :password, 'Password', :class => 'form-label'
+        = form.text_field :password, size: 50, :class => 'col-12 form-control', :type => 'password'
+
+      .actions.row.form-group.flex-float-right-content
+        = form.submit 'Login', :class => 'btn btn-success submit_button'

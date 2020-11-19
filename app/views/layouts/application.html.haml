@@ -13,18 +13,21 @@
 
   %body
     .wrapper
-      %nav.sidebar
-        .sidebar-header
-          %h3 CRM
-        %ul.list-unstyled.components
-          %li
-            = link_to 'Users', users_path
-          %li
-            = link_to 'Companies', companies_path
-          %li
-            = link_to 'Trade Notes'
-          %li
-            = link_to 'Contact People'
+      - if current_user
+        %nav.sidebar
+          .sidebar-header
+            %h3 CRM
+          %ul.list-unstyled.components
+            %li
+              = link_to 'Users', users_path
+            %li
+              = link_to 'Companies', companies_path
+            %li
+              = link_to 'Trade Notes'
+            %li
+              = link_to 'Contact People'
+            %li
+              = link_to 'Logout', '/logout', :class => 'text-info'
       %main.content.d-flex.justify-content-center
         .col-12
           = yield
