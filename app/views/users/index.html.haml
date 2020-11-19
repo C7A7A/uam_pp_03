@@ -26,7 +26,8 @@
               %td
                 = link_to 'Show', user, :class => "btn btn-warning show_user action_button"
                 = link_to 'Edit', edit_user_path(user), :class => "btn btn-info edit_user action_button"
-                = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_user action_button"
+                - if @current_user.role.name == 'admin'
+                  = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_user action_button"
   .row.justify-content-center
     = will_paginate @users
 

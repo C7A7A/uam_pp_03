@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # protect_from_forgery with: :null_session
 
   def index 
-    @users = User.paginate(page: params[:page], per_page: 5)
+    @users = User.paginate(page: params[:page], per_page: 5).where.not(is_deleted: true)
   end
 
   def show
@@ -54,8 +54,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.is_deleted != true
-        @user.is_deleted = true
-        @user.save
+        @user.update(is_deleted: true)
+
         format.html { redirect_to users_url, notice: 'User was successfully deleted' }
         format.json { head :no_content }
       else

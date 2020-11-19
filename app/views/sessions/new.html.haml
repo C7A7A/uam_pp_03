@@ -14,3 +14,14 @@
 
       .actions.row.form-group.flex-float-right-content
         = form.submit 'Login', :class => 'btn btn-success submit_button'
+  .row.login_toast.justify-content-center
+    .toast{ :role => 'alert', "aria-live" => 'assertive', 'aria-atomic' => 'true' }
+      .toast-header
+        %strong.mr-auto Login info
+      .toast-body 
+        admin login: matcza password: haslo123
+        %br/
+        moderator login: antkol password: haslo123
+        %br/
+        regular login: aganow password: haslo123
+    
