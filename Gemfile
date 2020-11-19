@@ -9,6 +9,9 @@ gem 'haml-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use mysql as the database for Active Record

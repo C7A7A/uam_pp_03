@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_190032) do
+ActiveRecord::Schema.define(version: 2020_11_18_222454) do
 
-  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 200
-    t.integer "nip"
-    t.string "address", limit: 200
-    t.string "city", limit: 100
+  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.string "name", limit: 200, collation: "latin1_swedish_ci"
+    t.bigint "nip"
+    t.string "address", limit: 200, collation: "latin1_swedish_ci"
+    t.string "city", limit: 100, collation: "latin1_swedish_ci"
     t.boolean "is_deleted"
     t.bigint "industry_id", null: false
     t.bigint "user_id", null: false
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 2020_11_12_190032) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
-  create_table "contact_people", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 50
-    t.string "surname", limit: 100
-    t.string "phone", limit: 20
-    t.string "email", limit: 150
-    t.string "position", limit: 100
+  create_table "contact_people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.string "name", limit: 50, collation: "latin1_swedish_ci"
+    t.string "surname", limit: 100, collation: "latin1_swedish_ci"
+    t.string "phone", limit: 20, collation: "latin1_swedish_ci"
+    t.string "email", limit: 150, collation: "latin1_swedish_ci"
+    t.string "position", limit: 100, collation: "latin1_swedish_ci"
     t.boolean "is_deleted"
     t.bigint "company_id", null: false
     t.bigint "user_id", null: false
@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 2020_11_12_190032) do
     t.index ["user_id"], name: "index_contact_people_on_user_id"
   end
 
-  create_table "industries", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 50
+  create_table "industries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.string "name", limit: 50, collation: "latin1_swedish_ci"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.text "content"
+  create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.text "content", collation: "latin1_swedish_ci"
     t.boolean "is_deleted"
     t.bigint "company_id", null: false
     t.bigint "user_id", null: false
@@ -58,18 +58,18 @@ ActiveRecord::Schema.define(version: 2020_11_12_190032) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 50
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.string "name", limit: 50, collation: "latin1_swedish_ci"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 50
-    t.string "surname", limit: 100
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.string "name", limit: 50, collation: "latin1_swedish_ci"
+    t.string "surname", limit: 100, collation: "latin1_swedish_ci"
     t.date "date_of_birth"
-    t.string "login", limit: 50
-    t.string "password_digest", limit: 200
+    t.string "login", limit: 50, collation: "latin1_swedish_ci"
+    t.string "password_digest", limit: 150, collation: "latin1_swedish_ci"
     t.boolean "is_deleted"
     t.bigint "role_id", null: false
     t.datetime "created_at", null: false

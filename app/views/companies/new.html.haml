@@ -1,0 +1,10 @@
+.companies_new
+  .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
+    %h4 Add new company
+  .row.company_new_form
+    = render 'form', user: @company
+  .row
+    = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button'

@@ -60,3 +60,8 @@ body {
     flex-grow: 1;
   }
 }
+
+.flex-float-right-content {
+  display: flex;
+  justify-content: flex-end;
+}

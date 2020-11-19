@@ -5,7 +5,7 @@
   .row
     %h3 Users
     = link_to 'Add new user', new_user_path, :class => "btn btn-primary add_new_user"
-  .row.users_table_info
+  .row.users_table_info.mt-1
     %table.table
       %thead.thead-dark
         %th{ :scope => "col" } name
@@ -27,4 +27,6 @@
                 = link_to 'Show', user, :class => "btn btn-warning show_user action_button"
                 = link_to 'Edit', edit_user_path(user), :class => "btn btn-info edit_user action_button"
                 = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_user action_button"
+  .row.justify-content-center
+    = will_paginate @users
 

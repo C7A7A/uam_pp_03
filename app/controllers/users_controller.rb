@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # protect_from_forgery with: :null_session
 
   def index 
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created' }
-        format.json { render :show, status: :created,  location: @user}
+        format.json { render :show, status: :created, location: @user}
       else 
         @roles = Role.all
         format.html { render :new }
