@@ -18,8 +18,9 @@
           .sidebar-header
             %h3 CRM
           %ul.list-unstyled.components
-            %li
-              = link_to 'Users', users_path
+            - if can? :read, @user
+              %li
+                = link_to 'Users', users_path
             %li
               = link_to 'Companies', companies_path
             %li

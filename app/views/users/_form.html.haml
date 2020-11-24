@@ -25,7 +25,7 @@
     = form.label :password, 'Password', :class => 'col-3 col-form-label'
     = form.text_field :password, size: 40, :class => 'col-9 form-control', :type => 'password'
 
-  - if @current_user.role.name == 'admin'
+  - if can? :assign_roles, @user
     .field.form-group.row
       = form.label :role, 'Role', :class => 'col-3 col-form-label'
       = form.select(:role_id, @roles.map { |role| [role.name, role.id] }, {}, { :class => 'col-9 form-control' })

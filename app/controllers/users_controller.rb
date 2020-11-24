@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # protect_from_forgery with: :null_session
+  load_and_authorize_resource
 
   def index 
     @users = User.paginate(page: params[:page], per_page: 5).where.not(is_deleted: true)

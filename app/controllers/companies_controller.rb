@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  # TODO: before creating company -> check who created it
+  load_and_authorize_resource
+
   def index
     @companies = Company.paginate(page: params[:page], per_page: 5).where.not(is_deleted: true)
   end
@@ -23,7 +24,7 @@ class CompaniesController < ApplicationController
 
     @company = Company.new(company_params)
 
-    @company.user_id = @user.id
+    @company.user_id = current_user.id
 
     respond_to do |f| 
       if @company.save
