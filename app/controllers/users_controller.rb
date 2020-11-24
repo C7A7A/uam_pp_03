@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   # protect_from_forgery with: :null_session
   load_and_authorize_resource
+  skip_authorize_resource :only => [:new, :create, :register]
+  skip_before_action :authorize, only: [:new, :create, :register]
 
   def index 
     @users = User.paginate(page: params[:page], per_page: 5).where.not(is_deleted: true)
@@ -62,6 +64,24 @@ class UsersController < ApplicationController
       else
         format.html { redirect_to users_url, notice: 'Error: user wasn`t deleted' }
         format.json { render json: @user.errors, status: 422 }
+      end
+    end
+  end
+
+  def register
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        if !current_user
+          session[:user_id] = @user.id
+        end
+        format.html { redirect_to companies_url, notice: 'You successfully registered!' }
+        format.json { render :index, status: :registered, location: companies_url}
+      else 
+        @roles = Role.all
+        format.html { render 'sessions/register' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: [:login, :register, :create]
 
-  def new
+  def login
+  end
+
+  def register
+    @user = User.new
   end
 
   def create
@@ -11,7 +15,7 @@ class SessionsController < ApplicationController
       redirect_to companies_url, notice: "Logged in!"
     else
       flash[:alert] = 'Email or password is invalid'
-      render :new
+      render :login
     end
   end
 

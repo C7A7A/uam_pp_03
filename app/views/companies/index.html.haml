@@ -31,8 +31,10 @@
               %td= link_to 'Notes', company, :class => 'btn btn-success show_company_notes'
               %td
                 = link_to 'Show', company, :class => "btn btn-warning show_company action_button"
-                = link_to 'Edit', edit_company_path(company), :class => "btn btn-info edit_company action_button"
-                = link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_company action_button"
+                - if can? :update, company
+                  = link_to 'Edit', edit_company_path(company), :class => "btn btn-info edit_company action_button"
+                - if can? :destroy, company
+                  = link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_company action_button"
   .row.justify-content-center
     = will_paginate @companies
 

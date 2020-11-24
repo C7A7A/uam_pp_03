@@ -2,6 +2,7 @@
   .row.justify-content-center 
     - if flash[:alert]
       %p.alert.alert-danger= flash[:alert]
+
   .row.justify-content-center
     = form_with url: '/login', local: true do |form|
       .field.form-group.row
@@ -13,7 +14,9 @@
         = form.text_field :password, size: 50, :class => 'col-12 form-control', :type => 'password'
 
       .actions.row.form-group.flex-float-right-content
+        = link_to 'Register', '/register', :class => 'btn btn-primary register_button mr-1'
         = form.submit 'Login', :class => 'btn btn-success submit_button'
+
   .row.login_toast.justify-content-center
     .toast{ :role => 'alert', "aria-live" => 'assertive', 'aria-atomic' => 'true' }
       .toast-header

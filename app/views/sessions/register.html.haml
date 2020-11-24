@@ -1,0 +1,9 @@
+.register_new
+  .row.justify-content-center
+    - if flash[:alert]
+      %p.alert.alert-danger= flash[:alert]
+  
+  .row.row.justify-content-center
+    %h4 Register
+  .row.justify-content-center
+    = render 'users/form', user: @user
