@@ -26,7 +26,7 @@ users = User.create([
     login: "matcza",
     password: "haslo123",
     is_deleted: false,
-    role_id: roles.first.id
+    role_id: roles.first.id # CR: To jest kiepska komstrukcja, bardzo nieprofesjonalna. zdecydowanie lepiej role_id: Role.find_by(name: 'admin')
   },
   {
     name: "Antoni",
@@ -35,7 +35,7 @@ users = User.create([
     login: "antkol",
     password: "haslo123",
     is_deleted: false,
-    role_id: roles.second.id
+    role_id: roles.second.id # CR: tu tak samo
   },
   {
     name: "Agata",
@@ -66,11 +66,12 @@ industries = Industry.create([
   }
 ])
 
+# CR: po co zmienna companies? nigdzie nie jest uzyta w tym pliku. rozumiem ze konsekwentnie z industries czy users po prostu, jednak bez sensu
 companies = Company.create([
   {
     name: 'Fly',
     nip: 1111111111,
-    industry_id: industries[0].id,
+    industry_id: industries[0].id, # CR: Tu jak z roles. Industry.find_by(name: 'Airlanes')
     address: 'Lotnisowo 17',
     city: 'Poznań',
     is_deleted: false,

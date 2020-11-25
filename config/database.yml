@@ -12,18 +12,19 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
-  database: uam_pp_dev
-  host: localhost
-  username: root
-  password: PiotrGarbicz123
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: s452648
+  password: haslo123
+  host: mysql.wmi.amu.edu.pl
 
 development:
   adapter: mysql2
+  database: s452648_pracownia_programowania
+  host: mysql.wmi.amu.edu.pl
+  port: 3306
+  username: s452648
+  password: haslo123
   encoding: utf8mb4
-  database: uam_pp_dev
-  host: localhost
-  username: root
-  password: PiotrGarbicz123
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -53,4 +54,6 @@ test:
 #
 production:
   <<: *default
-  database: uam_pp_test
+  database: uam_pp_production
+  username: uam_pp
+  password: <%= ENV['UAM_PP_DATABASE_PASSWORD'] %>
