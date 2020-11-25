@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '2.7.1' # CR: Stary ruby, warto wskoczy na 2.7.1 ;)
+
+# CR: polecam rubocop
 
 gem 'haml'
 gem 'haml-rails'
@@ -9,7 +11,7 @@ gem 'haml-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '~> 3.1.0' #CR: to jest dependency następnego gemu, nie musi by koniecznie dodane
 gem 'will_paginate-bootstrap4'
 
 gem 'cancancan'

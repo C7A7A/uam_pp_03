@@ -20,6 +20,7 @@ class CompaniesController < ApplicationController
   end
 
   def create 
+  # CR: bialy znak linie wyzej. w paru miejscach rowniez, juz nie bede poprawial
     @user = User.find(params[:company][:user_id])
 
     @company = Company.new(company_params)
@@ -27,6 +28,7 @@ class CompaniesController < ApplicationController
     @company.user_id = current_user.id
 
     respond_to do |f| 
+      # CR: o tym gadalismy dzisiaj. respond_to mozna wyjebac. patrz przyklad z update
       if @company.save
         f.html { redirect_to @company, notice: 'Company was successfully created' }
         f.json { render :show, status: :created, location: @company }
@@ -40,15 +42,10 @@ class CompaniesController < ApplicationController
 
   def update 
     @company = Company.find(params[:id])
-
-    respond_to do |f|
-      if @company.update(company_params)
-        f.html { redirect_to @company, notice: 'Company was successfully updated' }
-        f.json { render :show, status: :ok, location: @company }
-      else
-        f.html { render :edit }
-        f.json { render json: @company.errors, satus: :unprocessable_entity }
-      end
+    if @company.update(company_params)
+      redirect_to @company, notice: 'Company was successfully updated'
+    else
+      ender :edit
     end
   end
 
@@ -68,9 +65,12 @@ class CompaniesController < ApplicationController
     end
   end
 
+  # CR: dobrze jest zostawic jedna linie pusta po 'private'. (rubocop).
+  # Ale to tylko zalozenia stylistyczne, rob jak chcesz, po prostu my tak robimy w formie
   private
   def company_params
     params.require(:company).permit(:name, :nip, :industry_id, :address, :city, :user_id, :is_deleted)
   end
   
+# CR: pusta linia powyzej
 end

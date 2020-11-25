@@ -2,9 +2,11 @@ class UsersController < ApplicationController
   # protect_from_forgery with: :null_session
   load_and_authorize_resource
   skip_authorize_resource :only => [:new, :create, :register]
+  # CR: od ruby 1.9 lepsza jest konstrukcja przypisania hashy - only: [:new, :create, :register]
   skip_before_action :authorize, only: [:new, :create, :register]
 
   def index 
+  # CR: bialy znak
     @users = User.paginate(page: params[:page], per_page: 5).where.not(is_deleted: true)
   end
 
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created' }
-        format.json { render :show, status: :created, location: @user}
+        format.json { render :show, status: :created, location: @user} # CR: w nawiasach klamrowych dobrze jest zostawic spacje na pcczatku i na koncu zawartosci (po @user)
       else 
         @roles = Role.all
         format.html { render :new }
@@ -87,7 +89,8 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :surname, :date_of_birth, :login, :password, :role_id, :is_deleted)
-    end
+  # Tutaj wciecie w private o jeden za duzo. private to nie jest blok, wiec powinno byc wszystko w jednej glebokosci
+  def user_params
+    params.require(:user).permit(:name, :surname, :date_of_birth, :login, :password, :role_id, :is_deleted)
+  end
 end

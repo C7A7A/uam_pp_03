@@ -11,9 +11,10 @@ class User < ApplicationRecord
 
   before_validation :default_role, on: [:create, :register]
 
-  private
-    def default_role
-      regular = Role.find_by(name: 'regular')
-      self.role_id ||= regular.id
-    end
+  private # CR: tutaj default role tak samo -> na jednej glebokosci co private powinno byc
+
+  def default_role
+    regular = Role.find_by(name: 'regular')
+    self.role_id ||= regular.id
+  end
 end

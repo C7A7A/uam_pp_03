@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    if user.present?
+    if user.present? # CR: lepsza jest konstukcja return unless od takiego ifa -> przyklad nizej
       if user.role.name == 'admin'
         can :manage, :all
         can :assign_roles, User
@@ -18,10 +18,34 @@ class Ability
       if user.role.name == 'regular'
         can :read, [Company, Note, ContactPerson]
         
+        # CR: biale znaki powyzej
         can [:create], Company
         can :manage, Company, user_id: user.id 
       end
     end
+
+    # CR: Tak to powinno byc zapisane
+
+    return unless user.present?
+
+    if user.role.name == 'admin'
+      can :manage, :all
+      can :assign_roles, User
+    end
+
+    if user.role.name == 'moderator'
+      can :read, :all
+      can [:create, :edit], User
+    end
+
+    if user.role.name == 'regular'
+      can :read, [Company, Note, ContactPerson]
+      can [:create], Company
+      can :manage, Company, user_id: user.id
+    end
+
+    # CR: Te komentarze mozna wywalic, kod jest mniej czytelny a wlasciwie masz juz to zapisane ;)
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

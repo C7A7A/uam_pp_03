@@ -28,9 +28,10 @@
             %li
               = link_to 'Contact People'
             %li
+              -# CR: Przypisywanie hashy + url helper by wypadalo
               = link_to 'Logout', '/logout', :class => 'text-info'
       %main.content.d-flex.justify-content-center
         .col-12
           = yield
-
+-# CR: Trzy puste linie nie musza byc, wystarczy jedna ;)
 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   post 'register', to: 'users#register'  
-
+  # CR: W linii powyzej biale znaki na koncu linii niepotrzebnie
   resources :companies
 
   get 'login', to: 'sessions#login'

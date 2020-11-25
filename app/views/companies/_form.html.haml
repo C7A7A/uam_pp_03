@@ -6,7 +6,8 @@
           %li= message
     
   .field.form-group.row
-    = form.label :name, 'Name', :class => 'col-3 col-form-label'
+    -# CR: nie tak przypisujemy hashe. poprawilem w 10, w 11 jest tak jak zapisales. Nie jest to niepoprawne od strony logiki, ale stylistycznie tak
+    = form.label :name, 'Name', class: 'col-3 col-form-label'
     = form.text_field :name, size: 50, :class => 'col-9 form-control'
 
   .field.form-group.row
@@ -32,3 +33,4 @@
     = form.submit :class => 'btn btn-success submit_button'
     
   
+-# CR: Niepotrzebne białe znaki w pustych liniach
