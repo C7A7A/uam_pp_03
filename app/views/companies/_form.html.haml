@@ -6,29 +6,27 @@
           %li= message
     
   .field.form-group.row
-    = form.label :name, 'Name', :class => 'col-3 col-form-label'
-    = form.text_field :name, size: 50, :class => 'col-9 form-control'
+    = form.label :name, 'Name', class: 'col-3 col-form-label'
+    = form.text_field :name, size: 50, class: 'col-9 form-control'
 
   .field.form-group.row
-    = form.label :nip, 'NIP', :class => 'col-3 col-form-label'
-    = form.text_field :nip, size: 10, :class => 'col-9 form-control'
+    = form.label :nip, 'NIP', class: 'col-3 col-form-label'
+    = form.text_field :nip, size: 10, class: 'col-9 form-control'
 
   .field.form-group.row
-    = form.label :address, 'Address', :class => 'col-3 col-form-label'
-    = form.text_field :address, size: 50, :class => 'col-9 form-control'
+    = form.label :address, 'Address', class: 'col-3 col-form-label'
+    = form.text_field :address, size: 50, class: 'col-9 form-control'
 
   .fiedl.form-group.row
-    = form.label :city, 'City', :class => 'col-3 col-form-label'
-    = form.text_field :city, size: 50, :class => 'col-9 form-control'
+    = form.label :city, 'City', class: 'col-3 col-form-label'
+    = form.text_field :city, size: 50, class: 'col-9 form-control'
 
   .field.form-group.row
-    = form.label :industry, 'Industry', :class => 'col-3 col-form-label'
-    = form.select(:industry_id, @industries.map { |industry| [industry.name, industry.id] }, {}, { :class => 'col-9 form-control' })
+    = form.label :industry, 'Industry', class: 'col-3 col-form-label'
+    = form.select(:industry_id, @industries.map { |industry| [industry.name, industry.id] }, {}, { class: 'col-9 form-control' })
     
-  = form.hidden_field :is_deleted, :value => false
-  = form.hidden_field :user_id, :value => '65'
+  = form.hidden_field :is_deleted, value: false
+  = form.hidden_field :user_id, value: '65'
   
   .actions.row.form-group.flex-float-right-content
-    = form.submit :class => 'btn btn-success submit_button'
-    
-  
+    = form.submit class: 'btn btn-success submit_button'

@@ -4,19 +4,19 @@
       %p.alert.alert-info= notice
   .row
     %h3 Companies
-    = link_to 'Add new company', new_company_path, :class => "btn btn-primary add_new_company"
+    = link_to 'Add new company', new_company_path, class: "btn btn-primary add_new_company"
   .row.company_table_info.mt-1
     %table.table
       %thead.thead-dark
-        %th{ :scope => "col" } name
-        %th{ :scope => "col" } nip
-        %th{ :scope => "col" } industry
-        %th{ :scope => "col" } address
-        %th{ :scope => "col" } city
-        %th{ :scope => "col" } Added
-        %th{ :scope => "col" } contact
-        %th{ :scope => "col" } notes
-        %th{ :scope => "col" } actions
+        %th{ scope: "col" } name
+        %th{ scope: "col" } nip
+        %th{ scope: "col" } industry
+        %th{ scope: "col" } address
+        %th{ scope: "col" } city
+        %th{ scope: "col" } Added
+        %th{ scope: "col" } contact
+        %th{ scope: "col" } notes
+        %th{ scope: "col" } actions
       %tbody
         - @companies.each do |company|
           - if !company.is_deleted
@@ -27,14 +27,14 @@
               %td= company.address
               %td= company.city
               %td= company.created_at.to_date
-              %td= link_to 'Contact', company, :class => 'btn btn-dark show_company_contact_people'
-              %td= link_to 'Notes', company, :class => 'btn btn-success show_company_notes'
+              %td= link_to 'Contact', company, class: 'btn btn-dark show_company_contact_people'
+              %td= link_to 'Notes', company, class: 'btn btn-success show_company_notes'
               %td
-                = link_to 'Show', company, :class => "btn btn-warning show_company action_button"
+                = link_to 'Show', company, class: "btn btn-warning show_company action_button"
                 - if can? :update, company
-                  = link_to 'Edit', edit_company_path(company), :class => "btn btn-info edit_company action_button"
+                  = link_to 'Edit', edit_company_path(company), class: "btn btn-info edit_company action_button"
                 - if can? :destroy, company
-                  = link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_company action_button"
+                  = link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger delete_company action_button"
   .row.justify-content-center
     = will_paginate @companies
 

@@ -19,58 +19,46 @@ class CompaniesController < ApplicationController
     @industries = Industry.all
   end
 
-  def create 
+  def create
     @user = User.find(params[:company][:user_id])
 
     @company = Company.new(company_params)
 
     @company.user_id = current_user.id
 
-    respond_to do |f| 
-      if @company.save
-        f.html { redirect_to @company, notice: 'Company was successfully created' }
-        f.json { render :show, status: :created, location: @company }
-      else
-        @industries = Industry.all
-        f.html { render :new }
-        f.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    if @company.save
+      redirect_to @company, notice: 'Company was successfully created'
+    else
+      @industries = Industry.all
+      render :new
     end
   end
 
-  def update 
+  def update
     @company = Company.find(params[:id])
 
-    respond_to do |f|
-      if @company.update(company_params)
-        f.html { redirect_to @company, notice: 'Company was successfully updated' }
-        f.json { render :show, status: :ok, location: @company }
-      else
-        f.html { render :edit }
-        f.json { render json: @company.errors, satus: :unprocessable_entity }
-      end
+    if @company.update(company_params)
+      redirect_to @company, notice: 'Company was successfully updated'
+    else
+      render :edit
     end
   end
 
   def destroy
     @company = Company.find(params[:id])
 
-    respond_to do |f|
-      if @company.is_deleted != true
-        @company.is_deleted = true
-        @company.save
-        f.html { redirect_to companies_url, notice: 'Company was successfuly deleted' }
-        f.json { head :no_content }
-      else
-        f.html { redirect_to companies_url, notice: 'Error: company wasn`t deleted' }
-        f.json { render json: @company.errors, status: 422 }
-      end
+    if @company.is_deleted != true
+      @company.is_deleted = true
+      @company.save
+      redirect_to companies_url, notice: 'Company was successfuly deleted'
+    else
+      redirect_to companies_url, notice: 'Error: company wasn`t deleted'
     end
   end
 
   private
+
   def company_params
     params.require(:company).permit(:name, :nip, :industry_id, :address, :city, :user_id, :is_deleted)
   end
-  
 end

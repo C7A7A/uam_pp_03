@@ -8,12 +8,10 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id])
     else
       @current_user = nil
-    end 
+    end
   end
 
   def authorize
-    if !current_user
-      redirect_to '/login', :alert => 'You must be logged in to visit this page'
-    end
+    redirect_to login_url, alert: 'You must be logged in to visit this page' unless current_user
   end
 end

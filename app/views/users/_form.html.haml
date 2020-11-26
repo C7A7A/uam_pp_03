@@ -32,6 +32,8 @@
     
   = form.hidden_field :is_deleted, :value => false
   
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+
   .actions.row.form-group.flex-float-right-content
     = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button mr-1'
     = form.submit :class => 'btn btn-success submit_button'
