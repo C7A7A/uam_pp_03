@@ -3,6 +3,11 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.paginate(page: params[:page], per_page: 5).where.not(is_deleted: true)
+
+    @companies = @companies.filter_by_industry(params[:industry_id]) if params[:industry_id].present?
+    @companies = @companies.filter_by_date(params[:created_at]) if params[:created_at].present?
+  
+    @industries = Industry.all
   end
 
   def show
@@ -20,8 +25,6 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:company][:user_id])
-
     @company = Company.new(company_params)
 
     @company.user_id = current_user.id
@@ -59,6 +62,6 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :nip, :industry_id, :address, :city, :user_id, :is_deleted)
+    params.require(:company).permit(:name, :nip, :industry_id, :address, :city, :user_id, :is_deleted, :created_at)
   end
 end

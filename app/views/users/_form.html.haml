@@ -6,36 +6,36 @@
           %li= message
     
   .field.form-group.row
-    = form.label :name, 'Name', :class => 'col-3 col-form-label'
-    = form.text_field :name, size: 50, :class => 'col-9 form-control'
+    = form.label :name, 'Name', class: 'col-3 col-form-label'
+    = form.text_field :name, size: 50, class: 'col-9 form-control'
 
   .field.form-group.row
-    = form.label :surname, 'Surname', :class => 'col-3 col-form-label'
-    = form.text_field :surname, size: 50, :class => 'col-9 form-control'
+    = form.label :surname, 'Surname', class: 'col-3 col-form-label'
+    = form.text_field :surname, size: 50, class: 'col-9 form-control'
 
   .field.form-group.row
-    = form.label :date_of_birth, 'Date of birth', :class => 'col-3 col-form-label'
-    = form.date_select :date_of_birth, { :start_year => 1920, :order => [:day, :month, :year] }, { :class => 'col-3 form-control' }
+    = form.label :date_of_birth, 'Date of birth', class: 'col-3 col-form-label'
+    = form.date_select :date_of_birth, { :start_year: 1920, order: [:day, :month, :year] }, { class: 'col-3 form-control' }
 
   .field.form-group.row
-    = form.label :login, 'Login', :class => 'col-3 col-form-label'
-    = form.text_field :login, size: 40, :class => 'col-9 form-control'
+    = form.label :login, 'Login', class: 'col-3 col-form-label'
+    = form.text_field :login, size: 40, class: 'col-9 form-control'
 
   .field.form-group.row
-    = form.label :password, 'Password', :class => 'col-3 col-form-label'
-    = form.text_field :password, size: 40, :class => 'col-9 form-control', :type => 'password'
+    = form.label :password, 'Password', class: 'col-3 col-form-label'
+    = form.text_field :password, size: 40, class: 'col-9 form-control', type: 'password'
 
   - if can? :assign_roles, @user
     .field.form-group.row
-      = form.label :role, 'Role', :class => 'col-3 col-form-label'
-      = form.select(:role_id, @roles.map { |role| [role.name, role.id] }, {}, { :class => 'col-9 form-control' })
+      = form.label :role_id, 'Role', class: 'col-3 col-form-label'
+      = form.select(:role_id, @roles.map { |role| [role.name, role.id] }, {}, { class: 'col-9 form-control' })
     
-  = form.hidden_field :is_deleted, :value => false
+  = form.hidden_field :is_deleted, :value: false
   
   = hidden_field_tag :authenticity_token, form_authenticity_token
 
   .actions.row.form-group.flex-float-right-content
-    = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button mr-1'
-    = form.submit :class => 'btn btn-success submit_button'
+    = link_to 'Back', url_for(:back), class: 'btn btn-secondary back_button mr-1'
+    = form.submit class: 'btn btn-success submit_button'
     
   

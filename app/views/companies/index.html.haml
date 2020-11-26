@@ -2,9 +2,22 @@
   .row
     - if notice
       %p.alert.alert-info= notice
-  .row
+  .row.col-12
     %h3 Companies
+  
     = link_to 'Add new company', new_company_path, class: "btn btn-primary add_new_company"
+  
+    .companies_filter_options.ml-4
+      = form_with(url: companies_url, method: 'get', local: true, class: 'form-inline') do |form|
+        .field.form-group
+          = form.label :industry_id, 'Industry', class: 'col-form-label'
+          = form.select(:industry_id, @industries.map { |industry| [industry.name, industry.id] }, { prompt: '' }, class: 'form-control ml-1')
+        .field.form-group.ml-2
+          = form.label :created_at, 'Created', class: 'col-form-label'
+          = form.date_field :created_at, as: :date, value: form.object.try(:strftime, "%Y-%m-%d"), class: 'form-control ml-1'
+        .actions.form-group.ml-2
+          = form.submit 'Filter', class: 'btn btn-primary submit_button'
+
   .row.company_table_info.mt-1
     %table.table
       %thead.thead-dark
