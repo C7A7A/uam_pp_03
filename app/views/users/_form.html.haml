@@ -15,7 +15,7 @@
 
   .field.form-group.row
     = form.label :date_of_birth, 'Date of birth', class: 'col-3 col-form-label'
-    = form.date_select :date_of_birth, { :start_year: 1920, order: [:day, :month, :year] }, { class: 'col-3 form-control' }
+    = form.date_select :date_of_birth, { start_year: 1920, order: [:day, :month, :year] }, { class: 'col-3 form-control' }
 
   .field.form-group.row
     = form.label :login, 'Login', class: 'col-3 col-form-label'
@@ -30,7 +30,7 @@
       = form.label :role_id, 'Role', class: 'col-3 col-form-label'
       = form.select(:role_id, @roles.map { |role| [role.name, role.id] }, {}, { class: 'col-9 form-control' })
     
-  = form.hidden_field :is_deleted, :value: false
+  = form.hidden_field :is_deleted, value: false
   
   = hidden_field_tag :authenticity_token, form_authenticity_token
 

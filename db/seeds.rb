@@ -128,7 +128,7 @@ contacts = ContactPerson.create([
   {
     name: "Jan",
     surname: "Nowak",
-    phone: "01-12-1977",
+    phone: "+48 666-658-101",
     email: "jannow@test.pl",
     position: "szef",
     company_id: companies[0].id,
@@ -138,7 +138,7 @@ contacts = ContactPerson.create([
   {
     name: "Krystyna",
     surname: "Kowalska",
-    phone: "11-11-1980",
+    phone: "421-321-321",
     email: "krykow@wp.pl",
     position: "handlarz",
     company_id: companies[0].id,
@@ -148,7 +148,7 @@ contacts = ContactPerson.create([
   {
     name: "Krzysztof",
     surname: "Kowalczyk",
-    phone: "05-03-1997",
+    phone: "+48 666-658-101",
     email: "krzkow@gmail.com",
     position: "dyrektor",
     company_id: companies[1].id,
@@ -158,7 +158,7 @@ contacts = ContactPerson.create([
   {
     name: "Tobiasz",
     surname: "Donder",
-    phone: "05-06-1991",
+    phone: "+663216521",
     email: "tobdod@gmail.com",
     position: "prawnik",
     company_id: companies[1].id,
@@ -168,7 +168,7 @@ contacts = ContactPerson.create([
   {
     name: "Aleksy",
     surname: "Nazwisko",
-    phone: "05-03-1957",
+    phone: "183952812",
     email: "alenaz@gmail.com",
     position: "dyrektor",
     company_id: companies[2].id,

@@ -1,1 +1,10 @@
-NEW
+.contacts_new
+  .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
+    %h4 Add new Contact Person
+  .row.contact_new_form
+    = render 'form', contact: @contact
+  .row
+    = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button'

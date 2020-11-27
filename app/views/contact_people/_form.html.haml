@@ -1,0 +1,33 @@
+= form_with(model: [@company, @contact], local: true) do |form|
+  - if contact.errors.any?
+    .row.form_warnings
+      %ul.alert.alert-danger.col-12
+        - contact.errors.full_messages.each do |message|
+          %li= message
+    
+  .field.form-group.row
+    = form.label :name, 'Name', class: 'col-3 col-form-label'
+    = form.text_field :name, size: 50, class: 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :surname, 'Surname', class: 'col-3 col-form-label'
+    = form.text_field :surname, size: 50, class: 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :phone, 'Phone', class: 'col-3 col-form-label'
+    = form.text_field :phone, size: 15, class: 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :email, 'Email', class: 'col-3 col-form-label'
+    = form.text_field :email, size: 40, class: 'col-9 form-control'
+
+  .field.form-group.row
+    = form.label :position, 'Position', class: 'col-3 col-form-label'
+    = form.text_field :position, size: 40, class: 'col-9 form-control'
+    
+  = form.hidden_field :is_deleted, value: false
+  
+  .actions.row.form-group.flex-float-right-content
+    = form.submit class: 'btn btn-success submit_button'
+    
+  

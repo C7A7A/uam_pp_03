@@ -1,1 +1,24 @@
-SHOW
+.contact_show
+  .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
+    %h4= @contact.name + ' ' + @contact.surname
+  .row.contact_info
+    %table.table.table-hover
+      %tbody
+        %tr
+          %th{ scope: "row" } Phone
+          %th{ scope: "row" }= @contact.phone
+        %tr
+          %th{ scope: "row" } Email
+          %th{ scope: "row" }= @contact.email
+        %tr 
+          %th{ scope: "row" } Position
+          %th{ scope: "row" }= @contact.position
+        %tr
+          %th{ scope: "row" } Company
+          %th{ scope: "row" }= @company.name
+  .row
+    = link_to 'Back', url_for(:back), class: 'btn btn-secondary back_button'
+    = link_to 'Contact People', company_contact_people_path, class: 'btn btn-primary redirect_contacts_button ml-1'

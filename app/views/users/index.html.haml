@@ -8,12 +8,12 @@
   .row.users_table_info.mt-1
     %table.table
       %thead.thead-dark
-        %th{ :scope => "col" } name
-        %th{ :scope => "col" } surname
-        %th{ :scope => "col" } date of birth
-        %th{ :scope => "col" } login
-        %th{ :scope => "col" } role
-        %th{ :scope => "col" } actions
+        %th{ scope: "col" } name
+        %th{ scope: "col" } surname
+        %th{ scope: "col" } date of birth
+        %th{ scope: "col" } login
+        %th{ scope: "col" } role
+        %th{ scope: "col" } actions
       %tbody
         - @users.each do |user|
           - if !user.is_deleted
@@ -24,10 +24,9 @@
               %td= user.login
               %td= user.role.name
               %td
-                = link_to 'Show', user, :class => "btn btn-warning show_user action_button"
-                = link_to 'Edit', edit_user_path(user), :class => "btn btn-info edit_user action_button"
+                = link_to 'Show', user, class: "btn btn-warning show_user action_button"
+                = link_to 'Edit', edit_user_path(user), class: "btn btn-info edit_user action_button"
                 - if can? :delete, @user
-                  = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger delete_user action_button"
+                  = link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger delete_user action_button"
   .row.justify-content-center
     = will_paginate @users
-

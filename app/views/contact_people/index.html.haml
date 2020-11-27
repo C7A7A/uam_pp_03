@@ -1,1 +1,32 @@
-INDEX
+.contacts
+  .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
+    %h3 Contact People
+    = link_to 'Add new contact', new_company_contact_person_path, :class => "btn btn-primary add_new_contact"
+  .row.contacts_table_info.mt-1
+    %table.table
+      %thead.thead-dark
+        %th{ scope: "col" } name
+        %th{ scope: "col" } surname
+        %th{ scope: "col" } phone
+        %th{ scope: "col" } email
+        %th{ scope: "col" } position
+        %th{ scope: "col" } company
+        %th{ scope: "col" } actions
+      %tbody
+        - @contacts.each do |contact|
+          - if !contact.is_deleted
+            %tr
+              %td= contact.name
+              %td= contact.surname
+              %td= contact.phone
+              %td= contact.email
+              %td= contact.position
+              %td= @company.name
+              %td
+                = link_to 'Show', company_contact_person_path(@company, contact), class: "btn btn-warning show_contact action_button"
+                = link_to 'Edit', edit_company_contact_person_path(@company, contact), class: "btn btn-info edit_contact action_button"
+                - if can? :delete, @contact
+                  = link_to 'Delete', company_contact_person_path(@company, contact), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger delete_contact action_button"
