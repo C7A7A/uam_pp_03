@@ -1,1 +1,24 @@
-SHOW
+.company_show
+  .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
+    %h4= @company.name
+  .row.comapny_info
+    %table.table.table-hover
+      %tbody
+        %tr
+          %th{ scope: "row" } NIP
+          %th{ scope: "row" }= @company.nip
+        %tr
+          %th{ scope: "row" } Industry
+          %th{ scope: "row" }= @company.industry.name
+        %tr 
+          %th{ scope: "row" } Address
+          %th{ scope: "row" }= @company.address
+        %tr
+          %th{ scope: "row" } City
+          %th{ scope: "row" }= @company.city
+  .row
+    = link_to 'Back', url_for(:back), class: 'btn btn-secondary back_button'
+    = link_to 'Companies', companies_path, class: 'btn btn-primary redirect_companies_button ml-1'

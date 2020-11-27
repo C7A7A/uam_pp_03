@@ -1,1 +1,11 @@
-EDIT
+.company_edit
+  .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
+    %h4= @company.name
+  .row.user_edit_form
+    = render 'form', company: @company
+  .row
+    = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button'
+    = link_to 'Companies', companies_path, :class => 'btn btn-primary redirect_companies_button ml-1'

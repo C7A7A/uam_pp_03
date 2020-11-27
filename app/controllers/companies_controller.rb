@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @companies = Company.paginate(page: params[:page], per_page: 5).where.not(is_deleted: true)
+    @companies = Company.paginate(page: params[:page], per_page: 5).where(is_deleted: false)
 
     @companies = @companies.filter_by_industry(params[:industry_id]) if params[:industry_id].present?
     @companies = @companies.filter_by_date(params[:created_at]) if params[:created_at].present?
@@ -39,10 +39,11 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-
+    
     if @company.update(company_params)
       redirect_to @company, notice: 'Company was successfully updated'
     else
+      @industries = Industry.all
       render :edit
     end
   end

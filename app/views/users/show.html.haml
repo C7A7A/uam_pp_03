@@ -8,17 +8,18 @@
     %table.table.table-hover
       %tbody
         %tr
-          %th{ :scope => "row" } Date of birth
-          %th{ :scope => "row" }= @user.date_of_birth
+          %th{ scope: "row" } Date of birth
+          %th{ scope: "row" }= @user.date_of_birth
         %tr
-          %th{ :scope => "row" } Login
-          %th{ :scope => "row" }= @user.login
-        %tr 
-          %th{ :scope => "row" } Password
-          %th{ :scope => "row" }= @user.password_digest #TODO only admin can see hashed pass
+          %th{ scope: "row" } Login
+          %th{ scope: "row" }= @user.login
+        - if current_user.role.name == 'admin'
+          %tr 
+            %th{ scope: "row" } Password
+            %th{ scope: "row" }= @user.password_digest #TODO only admin can see hashed pass
         %tr
-          %th{ :scope => "row" } Role
-          %th{ :scope => "row" }= @user.role.name
+          %th{ scope: "row" } Role
+          %th{ scope: "row" }= @user.role.name
   .row
-    = link_to 'Back', url_for(:back), :class => 'btn btn-secondary back_button'
-    = link_to 'Users', users_path, :class => 'btn btn-primary redirect_users_button ml-1'
+    = link_to 'Back', url_for(:back), class: 'btn btn-secondary back_button'
+    = link_to 'Users', users_path, class: 'btn btn-primary redirect_users_button ml-1'

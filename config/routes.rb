@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  root 'users#index', as: 'user_index'
+  root 'companies#index', as: 'companies_index'
 
   resources :users
   post 'register', to: 'users#register'  
 
-  resources :companies
+  resources :companies do
+    resources :contact_people
+    resources :notes
+  end
 
   get 'login', to: 'sessions#login'
   post 'login', to: 'sessions#create'

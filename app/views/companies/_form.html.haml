@@ -26,7 +26,6 @@
     = form.select(:industry_id, @industries.map { |industry| [industry.name, industry.id] }, {}, { class: 'col-9 form-control' })
     
   = form.hidden_field :is_deleted, value: false
-  = form.hidden_field :user_id, value: '65'
   
   .actions.row.form-group.flex-float-right-content
     = form.submit class: 'btn btn-success submit_button'
