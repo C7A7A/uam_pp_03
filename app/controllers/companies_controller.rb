@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-    
+
     if @company.update(company_params)
       redirect_to @company, notice: 'Company was successfully updated'
     else
