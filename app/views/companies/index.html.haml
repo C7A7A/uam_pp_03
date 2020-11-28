@@ -41,7 +41,7 @@
               %td= company.city
               %td= company.created_at.to_date
               %td= link_to 'Contact', company_contact_people_url(company), class: 'btn btn-dark show_company_contact_people'
-              %td= link_to 'Notes', company, class: 'btn btn-success show_company_notes'
+              %td= link_to 'Notes', company_notes_url(company), class: 'btn btn-success show_company_notes'
               %td
                 = link_to 'Show', company, class: "btn btn-warning show_company action_button"
                 - if can? :update, company

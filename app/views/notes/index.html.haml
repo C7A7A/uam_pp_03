@@ -1,1 +1,25 @@
-INDEX
+.notes
+  .row
+    - if notice
+      %p.alert.alert-info= notice
+  .row
+    %h3 Notes (#{@company.name})
+    = link_to 'Add new note', new_company_note_path, class: "btn btn-primary add_new_note"
+
+  .row.note_table_info.mt-1
+    %table.table
+      %thead.thead-dark
+        %th{ scope: "col" } content
+        %th{ scope: "col" } actions
+      %tbody
+        - @notes.each do |note|
+          - if !note.is_deleted
+            %tr
+              %td.note_content= note.content
+              %td
+                = link_to 'Show', company_note_path(@company, note), class: "btn btn-warning show_note action_button"
+                - if can? :update, @note
+                  = link_to 'Edit', edit_company_note_path(@company, note), class: "btn btn-info edit_note action_button"
+                - if can? :destroy, @note
+                  = link_to 'Delete', company_note_path(@company, note), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger delete_note action_button"
+

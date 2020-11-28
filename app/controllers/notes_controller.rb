@@ -19,12 +19,33 @@ class NotesController < ApplicationController
   end
 
   def create
+    @note = @company.notes.new(note_params)
+
+    @note.user_id = current_user.id
+    @note.company_id = @company.id
+
+    if @note.save
+      redirect_to company_note_url, notice: 'Note was successfully created'
+    else
+      render :new
+    end
   end
 
   def update
+    if @note.update(note_params)
+      redirect_to company_note_url, notice: 'Note was successfully updated'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if @note.is_deleted != true
+      @note.update(is_deleted: true)
+      redirect_to company_notes_url, notice: 'Note was successfully deleted'
+    else
+      redirect_to company_notes_url, notice: 'Error: note wasn`t deleted'
+    end
   end
 
   private

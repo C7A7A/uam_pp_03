@@ -34,8 +34,6 @@ class ContactPeopleController < ApplicationController
   end
 
   def update
-    @contact.company_id = @company.id
-
     if @contact.update(contact_params)
       redirect_to company_contact_person_url, notice: 'Contact person was successfully updated'
     else

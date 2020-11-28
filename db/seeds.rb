@@ -1,5 +1,6 @@
 # coding: utf-8
 
+Note.delete_all
 ContactPerson.delete_all
 Company.delete_all
 Industry.delete_all
@@ -175,4 +176,55 @@ contacts = ContactPerson.create([
     is_deleted: false,
     user_id: users.first.id
   }
+])
+
+notes = Note.create([
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[0].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[0].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[0].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[0].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[1].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[3].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[3].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
+  {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia maximus lorem non volutpat. Phasellus cursus nulla et erat ultrices pharetra. Nam dictum arcu sed purus ullamcorper, ut lobortis dolor euismod. Aliquam dignissim dui magna, in fringilla purus tincidunt nec. Proin quis molestie nunc, in vestibulum nibh. Sed rutrum mi at mi posuere, id ultricies elit ultricies. Praesent hendrerit quam non tellus iaculis, id imperdiet sapien elementum",
+    company_id: companies[4].id,
+    is_deleted: false,
+    user_id: users.first.id
+  },
 ])

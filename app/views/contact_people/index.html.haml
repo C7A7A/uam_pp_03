@@ -3,7 +3,7 @@
     - if notice
       %p.alert.alert-info= notice
   .row
-    %h3 Contact People
+    %h3 Contact People (#{@company.name})
     = link_to 'Add new contact', new_company_contact_person_path, :class => "btn btn-primary add_new_contact"
 
     .contacts_filter_options.ml-4
@@ -20,7 +20,6 @@
         %th{ scope: "col" } phone
         %th{ scope: "col" } email
         %th{ scope: "col" } position
-        %th{ scope: "col" } company
         %th{ scope: "col" } actions
       %tbody
         - @contacts.each do |contact|
@@ -31,7 +30,6 @@
               %td= contact.phone
               %td= contact.email
               %td= contact.position
-              %td= @company.name
               %td
                 = link_to 'Show', company_contact_person_path(@company, contact), class: "btn btn-warning show_contact action_button"
                 = link_to 'Edit', edit_company_contact_person_path(@company, contact), class: "btn btn-info edit_contact action_button"
