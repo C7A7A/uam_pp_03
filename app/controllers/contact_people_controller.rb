@@ -6,6 +6,8 @@ class ContactPeopleController < ApplicationController
 
   def index
     @contacts = @company.contact_people
+
+    @contacts = @contacts.filter_by_surname(params[:surname]) if params[:surname].present?
   end
 
   def show

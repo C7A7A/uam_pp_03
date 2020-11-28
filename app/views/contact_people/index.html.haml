@@ -5,6 +5,13 @@
   .row
     %h3 Contact People
     = link_to 'Add new contact', new_company_contact_person_path, :class => "btn btn-primary add_new_contact"
+
+    .contacts_filter_options.ml-4
+      = form_with(url: company_contact_people_url, method: 'get', local: true, class: 'form-inline') do |form|
+        .field.form-group
+          = form.text_field(:surname, class: 'form-control ml-1')
+        .actions.form-group.ml-2
+          = form.submit 'Search', class: 'btn btn-primary submit_button'
   .row.contacts_table_info.mt-1
     %table.table
       %thead.thead-dark
