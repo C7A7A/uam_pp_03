@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'notes/index'
+  get 'notes/show'
+  get 'notes/new'
+  get 'notes/edit'
+  get 'notes/create'
+  get 'notes/update'
+  get 'notes/destroy'
   root 'companies#index', as: 'companies_index'
 
   resources :users
